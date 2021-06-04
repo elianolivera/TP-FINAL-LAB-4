@@ -1,8 +1,6 @@
 package tphotel;
 
 import java.io.Serializable;
-import java.util.List;
-import java.util.Scanner;
 
 public class User implements Serializable  {
     protected String tipousuario;
@@ -23,6 +21,10 @@ public class User implements Serializable  {
         this.dni = dni;
         this.country = country;
         this.city = city;
+    }
+
+    public User(String usuario, String name, String lastname) {
+
     }
 
     public User() {

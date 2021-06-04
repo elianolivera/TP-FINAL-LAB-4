@@ -2,7 +2,6 @@ package tphotel;
 
 import java.io.*;
 import java.io.Serializable;
-import java.util.List;
 import java.util.Scanner;
 
 public class Admin extends User implements Serializable {
@@ -12,7 +11,7 @@ public class Admin extends User implements Serializable {
         super(tipousuario, usuario, contraseña, name, lastname, dni, country, city);
     }
     public Admin() {
-        super();
+
     }
 
     public int getId() {

@@ -1,10 +1,7 @@
 package tphotel;
 
-import tphotel.User;
-
 import java.io.*;
 import java.io.Serializable;
-import java.util.List;
 import java.util.Scanner;
 
 
@@ -12,6 +9,7 @@ public class Reteptionist extends User implements Serializable {
     private int id;
     public Reteptionist() {
         super();
+
     }
     public Reteptionist(String tipousuario, String usuario, String contraseña, String name, String lastname, int dni, String country, String city,int id) {
         super(tipousuario, usuario, contraseña, name, lastname, dni, country, city);
@@ -154,6 +152,8 @@ public class Reteptionist extends User implements Serializable {
                 break;
             case 7:
                 System.out.print("Estado de las habitaciones:\n");
+                Room a = new Room(5,"En mantenimiento","Si", false);
+                a.stateRoom();
                 System.out.print("Presione 0 para volver al menú \n");
                 Opcion2=teclado.nextInt();
                 switch (Opcion2){

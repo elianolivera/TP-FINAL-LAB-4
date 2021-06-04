@@ -3,8 +3,6 @@ package tphotel;
 
 import java.io.*;
 import java.io.Serializable;
-import java.util.List;
-import java.util.Scanner;
 
 public class Client extends User implements Serializable {
 
@@ -65,7 +63,7 @@ public class Client extends User implements Serializable {
         } }
 
     public Client() {
-        super();
+
     }
     public String getTipousuario() {
         return tipousuario;
