@@ -56,7 +56,7 @@ public class Main {
                     admi = teclado.nextLine();
                     if (admi.equals(admin)) {
 
-  Reteptionist r= new Reteptionist();
+  Recepcionist r= new Recepcionist();
   r.loginReteptionist();
 
                     } else {
