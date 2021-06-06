@@ -23,7 +23,7 @@ public class Admin extends User implements Serializable {
     }
 
 
-    ///MENU ADMINISTRADOR
+    ///MENU ADMINISTRADOR.
 
     public void menuAdmin() {
         int Opcion=0;
