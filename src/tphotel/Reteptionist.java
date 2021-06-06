@@ -10,6 +10,8 @@ public class Reteptionist extends User implements Serializable {
     public Reteptionist() {
         super();
 
+
+
     }
     public Reteptionist(String tipousuario, String usuario, String contraseña, String name, String lastname, int dni, String country, String city,int id) {
         super(tipousuario, usuario, contraseña, name, lastname, dni, country, city);
