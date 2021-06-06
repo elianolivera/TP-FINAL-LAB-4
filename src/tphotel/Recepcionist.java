@@ -19,7 +19,7 @@ public class Recepcionist extends User implements Serializable {
     public void loginReteptionist() {
 
 
-        Recepcionist r4= new Recepcionist("Reteptionist","carlos","garcia","Rina",".",13545257,"Argentina","Tandil");
+        Recepcionist r4= new Recepcionist("Reteptionist","carlos","garcia","Carlos",".",13545257,"Argentina","Tandil");
                 File mFile= new File("reteption.txt");
         if(!mFile.exists()){
             try {
@@ -174,6 +174,7 @@ public class Recepcionist extends User implements Serializable {
                 System.out.print("\n 3. Delete Client");
                 System.out.print("\n 4. Sreach Client ");
                 System.out.print("\n 5. Client List ");
+                System.out.print("\n 0. Volver ");
                 System.out.print("\n ==== Seleccione opción que desee  ===: \n");
                 Scanner teclados2 = new Scanner(System.in);
                 Opcion2 = teclado.nextInt();
@@ -191,16 +192,19 @@ public class Recepcionist extends User implements Serializable {
                         break;
 
                     case 2:
-                        System.out.print("Modify Client:\n");
+                        System.out.print("Modify Client \n");
+
+                        System.out.print("Presione 0 para volver al menú \n");
+                        Opcion2=teclado.nextInt();
                         switch (Opcion2){
-                            case 1:
-                                System.out.print("Baja de usuarioss:\n");
-
+                            case 0:
                                 menuReceptionist();
-                            case 2:
-
                         }
+                        break;
+                    case 3:
                         System.out.print("Delete Client\n");
+
+                        System.out.print("Presione 0 para volver al menú \n");
                         Opcion2=teclado.nextInt();
                         switch (Opcion2){
                             case 0:
@@ -208,7 +212,7 @@ public class Recepcionist extends User implements Serializable {
                         }
 
                         break;
-                    case 3:
+                    case 4:
                         System.out.print("Sreach Client\n");
 
                         System.out.print("Presione 0 para volver al menú \n");
@@ -219,8 +223,17 @@ public class Recepcionist extends User implements Serializable {
                         }
                         break;
 
-                    case 4:
+                    case 5:
                         System.out.print("List Clients \n");
+                        System.out.print("Presione 0 para volver al menú \n");
+                        Opcion2=teclado.nextInt();
+                        switch (Opcion2){
+                            case 0:
+                                menuReceptionist();
+                        }
+                        break;
+                    case 0:
+                        System.out.print("Volver \n");
                         System.out.print("Presione 0 para volver al menú \n");
                         Opcion2=teclado.nextInt();
                         switch (Opcion2){
