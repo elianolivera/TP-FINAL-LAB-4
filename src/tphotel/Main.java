@@ -36,7 +36,8 @@ public class Main {
                 usuario = ((Client) aux).getUsuario();
                 aux = objInputStream.readObject();
 
-                String admin = "si";
+                String confirm = "si";
+                String negative= "no";
                 int cont = 0, bandera = 0;
                 String ingreso;
                 String usuarios;
@@ -46,20 +47,20 @@ public class Main {
                 System.out.print("\n ¿Es usted un administrador?: si/no ");
                 admi = teclado.nextLine();
 
-                if (admi.equals(admin)) {
+                if (admi.equals( confirm)) {
 
                     Admin a= new Admin();
                     a.loginAdmin();
 
-                }else {
+                }else if(admi.equals(negative)) {
                     System.out.print("\n ¿Es usted un Recepcionista?: si/no ");
                     admi = teclado.nextLine();
-                    if (admi.equals(admin)) {
+                    if (admi.equals( confirm)) {
 
   Recepcionist r= new Recepcionist();
   r.loginReteptionist();
 
-                    } else {
+                    }else if(admi.equals(negative)){
                         System.out.print("\n ==Usted no es administrador ni recepcionista ingrese como usuario== ");
                         System.out.print("\n======== INGRESA COMO USUARIO: ======== ");
                         System.out.print("\n Ejemplo : Cliente en el archivo, Usuario: carlos , Pass: perez ");

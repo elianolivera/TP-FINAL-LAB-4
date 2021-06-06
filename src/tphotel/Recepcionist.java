@@ -91,8 +91,7 @@ public class Recepcionist extends User implements Serializable {
         System.out.println(" 4. Room Booking");
         System.out.println(" 5. Cancel Booking");
         System.out.println(" 6. Guests");
-        System.out.println(" 7. Settings ");
-        System.out.println(" 8. Management Client ");
+        System.out.println(" 7. Management Client ");
         System.out.println(" 0. Exit");
 
         System.out.print("\n ==== Seleccione opción que desee  ===: \n");
@@ -158,16 +157,9 @@ public class Recepcionist extends User implements Serializable {
                         menuReceptionist();
                 }
                 break;
+
+
             case 7:
-                System.out.print("Settings:\n");
-
-
-                switch (Opcion2){
-                    case 0:
-                        menuReceptionist();
-                }
-                break;
-            case 8:
                 System.out.print("Management Client:\n");
                 System.out.print("\n 1. Add Client ");
                 System.out.print("\n 2. Modify Client");
