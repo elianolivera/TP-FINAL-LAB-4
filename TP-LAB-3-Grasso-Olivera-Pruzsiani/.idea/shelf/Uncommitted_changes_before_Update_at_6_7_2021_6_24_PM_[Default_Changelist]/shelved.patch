@@ -1,0 +1,893 @@
+Index: TpFinal/src/model/Admin.java
+===================================================================
+diff --git a/TpFinal/src/model/Admin.java b/TpFinal/src/model/Admin.java
+deleted file mode 100644
+--- a/TpFinal/src/model/Admin.java	(revision 6a0cd12ba537252724e50a72f337fdbb8e4ce727)
++++ /dev/null	(revision 6a0cd12ba537252724e50a72f337fdbb8e4ce727)
+@@ -1,31 +0,0 @@
+-package model;
+-
+-import java.util.ArrayList;
+-import java.util.List;
+-
+-public class Admin extends User{
+-
+-    public Admin(String nameUser, int password, String name, String lastName, String dni, String country, String city) {
+-        super(nameUser, password, name, lastName, dni, country, city);
+-    }
+-
+-    private List<Receptionist>receptionistList = new ArrayList<>();
+-
+-    public void add(Receptionist receptionist){
+-        if (receptionist != null){
+-            if (receptionist instanceof Receptionist) {
+-                receptionistList.add(receptionist);
+-            }
+-        }
+-    }
+-
+-    public String getAll(){
+-
+-        StringBuilder sb = new StringBuilder();
+-        for (Receptionist receptionist : receptionistList){
+-            sb.append(receptionist.toString());
+-        }
+-        return sb.toString();
+-    }
+-
+-}
+Index: TpFinal/src/model/Client.java
+===================================================================
+diff --git a/TpFinal/src/model/Client.java b/TpFinal/src/model/Client.java
+deleted file mode 100644
+--- a/TpFinal/src/model/Client.java	(revision 6a0cd12ba537252724e50a72f337fdbb8e4ce727)
++++ /dev/null	(revision 6a0cd12ba537252724e50a72f337fdbb8e4ce727)
+@@ -1,21 +0,0 @@
+-package model;
+-
+-public class Client extends User {
+-
+-    private int idClient;
+-
+-    public Client(String nameUser, int password, String name, String lastName, String dni, String country, String city, int idClient) {
+-        super(nameUser, password, name, lastName, dni, country, city);
+-        this.idClient = idClient;
+-    }
+-
+-    public Integer getIdClient() {
+-        return idClient;
+-    }
+-
+-    public void setIdClient(int idClient) {
+-        this.idClient = idClient;
+-    }
+-
+-
+-}
+Index: TpFinal/src/model/Receptionist.java
+===================================================================
+diff --git a/TpFinal/src/model/Receptionist.java b/TpFinal/src/model/Receptionist.java
+deleted file mode 100644
+--- a/TpFinal/src/model/Receptionist.java	(revision 6a0cd12ba537252724e50a72f337fdbb8e4ce727)
++++ /dev/null	(revision 6a0cd12ba537252724e50a72f337fdbb8e4ce727)
+@@ -1,10 +0,0 @@
+-package model;
+-
+-public class Receptionist extends User {
+-
+-
+-    public Receptionist(String nameUser, int password, String name, String lastName, String dni, String country, String city) {
+-        super(nameUser, password, name, lastName, dni, country, city);
+-    }
+-
+-}
+Index: TpFinal/src/model/Room.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package model;\r\n\r\npublic class Room {\r\n\r\n    private int roomNumber;\r\n    private boolean available;\r\n    private int quantityBeds;\r\n\r\n    public int getRoomNumber() {\r\n        return roomNumber;\r\n    }\r\n\r\n    public void setRoomNumber(int roomNumber) {\r\n        this.roomNumber = roomNumber;\r\n    }\r\n\r\n    public boolean isAvailable() {\r\n        return available;\r\n    }\r\n\r\n    public void setAvailable(boolean available) {\r\n        this.available = available;\r\n    }\r\n\r\n    public int getQuantityBeds() {\r\n        return quantityBeds;\r\n    }\r\n\r\n    public void setQuantityBeds(int quantityBeds) {\r\n        this.quantityBeds = quantityBeds;\r\n    }\r\n\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/TpFinal/src/model/Room.java b/TpFinal/src/model/Room.java
+--- a/TpFinal/src/model/Room.java	(revision 6a0cd12ba537252724e50a72f337fdbb8e4ce727)
++++ b/TpFinal/src/model/Room.java	(date 1622912898905)
+@@ -3,9 +3,14 @@
+ public class Room {
+ 
+     private int roomNumber;
+-    private boolean available;
++    private boolean available = true;
+     private int quantityBeds;
+ 
++    public Room(int roomNumber, int quantityBeds) {
++        this.roomNumber = roomNumber;
++        this.quantityBeds = quantityBeds;
++    }
++
+     public int getRoomNumber() {
+         return roomNumber;
+     }
+Index: TpFinal/src/model/Hotel.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package model;\r\n\r\nimport java.util.ArrayList;\r\nimport java.util.List;\r\n\r\npublic class Hotel {\r\n    private List<Room>roomList = new ArrayList<>();\r\n    private List<Booking>bookingList = new ArrayList<>();\r\n\r\n    public void add(Room room){\r\n        if (room != null){\r\n            if (room instanceof Room) {\r\n                roomList.add(room);\r\n            }\r\n        }\r\n    }\r\n    public void add(Booking booking){\r\n        if (booking != null){\r\n            if (booking instanceof Booking) {\r\n                bookingList.add(booking);\r\n            }\r\n        }\r\n    }\r\n    public String getAllRoom(){\r\n\r\n        StringBuilder sb = new StringBuilder();\r\n        for (Room room : roomList){\r\n            sb.append(roomList.toString());\r\n        }\r\n        return sb.toString();\r\n    }\r\n\r\n    public String getAllBooking(){\r\n\r\n        StringBuilder sb = new StringBuilder();\r\n        for (Booking booking : bookingList){\r\n            sb.append(bookingList.toString());\r\n        }\r\n        return sb.toString();\r\n    }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/TpFinal/src/model/Hotel.java b/TpFinal/src/model/Hotel.java
+--- a/TpFinal/src/model/Hotel.java	(revision 6a0cd12ba537252724e50a72f337fdbb8e4ce727)
++++ b/TpFinal/src/model/Hotel.java	(date 1623093927623)
+@@ -1,5 +1,6 @@
+ package model;
+ 
++
+ import java.util.ArrayList;
+ import java.util.List;
+ 
+@@ -9,20 +10,17 @@
+ 
+     public void add(Room room){
+         if (room != null){
+-            if (room instanceof Room) {
+-                roomList.add(room);
+-            }
++            //Sacamos el if porque siempre ba a venir un Room
++            roomList.add(room);
+         }
+     }
+     public void add(Booking booking){
+         if (booking != null){
+-            if (booking instanceof Booking) {
+-                bookingList.add(booking);
+-            }
++            //Sacamos el if porque siempre ba a venir un Booking
++            bookingList.add(booking);
+         }
+     }
+     public String getAllRoom(){
+-
+         StringBuilder sb = new StringBuilder();
+         for (Room room : roomList){
+             sb.append(roomList.toString());
+@@ -30,6 +28,7 @@
+         return sb.toString();
+     }
+ 
++
+     public String getAllBooking(){
+ 
+         StringBuilder sb = new StringBuilder();
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"ChangeListManager\">\r\n    <list default=\"true\" id=\"900bc48c-cf5e-4f29-82d7-4b18b21335fd\" name=\"Default Changelist\" comment=\"\">\r\n      <change afterPath=\"$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/.idea/uiDesigner.xml\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/TpFinal/src/model/Admin.java\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/TpFinal/src/model/Booking.java\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/TpFinal/src/model/Client.java\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/TpFinal/src/model/Hotel.java\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/TpFinal/src/model/Receptionist.java\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/TpFinal/src/model/Room.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/.idea/workspace.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/workspace.xml\" afterDir=\"false\" />\r\n    </list>\r\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\r\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\r\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\r\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\r\n  </component>\r\n  <component name=\"FileTemplateManagerImpl\">\r\n    <option name=\"RECENT_TEMPLATES\">\r\n      <list>\r\n        <option value=\"Class\" />\r\n      </list>\r\n    </option>\r\n  </component>\r\n  <component name=\"Git.Settings\">\r\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$\" />\r\n  </component>\r\n  <component name=\"ProjectId\" id=\"1sj1QAz2zfDGWCBmGwloSHUZyTS\" />\r\n  <component name=\"ProjectViewState\">\r\n    <option name=\"hideEmptyMiddlePackages\" value=\"true\" />\r\n    <option name=\"showLibraryContents\" value=\"true\" />\r\n  </component>\r\n  <component name=\"PropertiesComponent\">\r\n    <property name=\"RunOnceActivity.OpenProjectViewOnStart\" value=\"true\" />\r\n    <property name=\"RunOnceActivity.ShowReadmeOnStart\" value=\"true\" />\r\n    <property name=\"SHARE_PROJECT_CONFIGURATION_FILES\" value=\"true\" />\r\n    <property name=\"WebServerToolWindowFactoryState\" value=\"false\" />\r\n    <property name=\"aspect.path.notification.shown\" value=\"true\" />\r\n    <property name=\"jdk.selected.JAVA_MODULE\" value=\"1.8\" />\r\n    <property name=\"last_opened_file_path\" value=\"$PROJECT_DIR$\" />\r\n    <property name=\"project.structure.last.edited\" value=\"Modules\" />\r\n    <property name=\"project.structure.proportion\" value=\"0.15\" />\r\n    <property name=\"project.structure.side.proportion\" value=\"0.2\" />\r\n    <property name=\"settings.editor.selected.configurable\" value=\"vcs.Git\" />\r\n  </component>\r\n  <component name=\"RunManager\">\r\n    <configuration default=\"true\" type=\"ArquillianTestNG\" factoryName=\"\" nameIsGenerated=\"true\">\r\n      <option name=\"arquillianRunConfiguration\">\r\n        <value>\r\n          <option name=\"containerStateName\" value=\"\" />\r\n        </value>\r\n      </option>\r\n      <option name=\"TEST_OBJECT\" value=\"CLASS\" />\r\n      <properties />\r\n      <listeners />\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n  </component>\r\n  <component name=\"SpellCheckerSettings\" RuntimeDictionaries=\"0\" Folders=\"0\" CustomDictionaries=\"0\" DefaultDictionary=\"application-level\" UseSingleDictionary=\"true\" transferred=\"true\" />\r\n  <component name=\"TaskManager\">\r\n    <task active=\"true\" id=\"Default\" summary=\"Default task\">\r\n      <changelist id=\"900bc48c-cf5e-4f29-82d7-4b18b21335fd\" name=\"Default Changelist\" comment=\"\" />\r\n      <created>1621371166539</created>\r\n      <option name=\"number\" value=\"Default\" />\r\n      <option name=\"presentableId\" value=\"Default\" />\r\n      <updated>1621371166539</updated>\r\n      <workItem from=\"1621371171202\" duration=\"103000\" />\r\n      <workItem from=\"1622490036582\" duration=\"2906000\" />\r\n    </task>\r\n    <servers />\r\n  </component>\r\n  <component name=\"TypeScriptGeneratedFilesManager\">\r\n    <option name=\"version\" value=\"3\" />\r\n  </component>\r\n  <component name=\"Vcs.Log.Tabs.Properties\">\r\n    <option name=\"TAB_STATES\">\r\n      <map>\r\n        <entry key=\"MAIN\">\r\n          <value>\r\n            <State />\r\n          </value>\r\n        </entry>\r\n      </map>\r\n    </option>\r\n  </component>\r\n  <component name=\"XDebuggerManager\">\r\n    <breakpoint-manager>\r\n      <breakpoints>\r\n        <line-breakpoint enabled=\"true\" type=\"java-line\">\r\n          <url>file://$PROJECT_DIR$/TpFinal/src/model/Admin.java</url>\r\n          <line>7</line>\r\n          <option name=\"timeStamp\" value=\"2\" />\r\n        </line-breakpoint>\r\n        <line-breakpoint enabled=\"true\" type=\"java-method\">\r\n          <url>file://$PROJECT_DIR$/TpFinal/src/model/Admin.java</url>\r\n          <line>6</line>\r\n          <properties class=\"model.Admin\" method=\"&lt;init&gt;\">\r\n            <option name=\"EMULATED\" value=\"true\" />\r\n          </properties>\r\n          <option name=\"timeStamp\" value=\"3\" />\r\n        </line-breakpoint>\r\n      </breakpoints>\r\n    </breakpoint-manager>\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+--- a/.idea/workspace.xml	(revision 6a0cd12ba537252724e50a72f337fdbb8e4ce727)
++++ b/.idea/workspace.xml	(date 1623101088209)
+@@ -1,16 +1,21 @@
+ <?xml version="1.0" encoding="UTF-8"?>
+ <project version="4">
+   <component name="ChangeListManager">
+-    <list default="true" id="900bc48c-cf5e-4f29-82d7-4b18b21335fd" name="Default Changelist" comment="">
+-      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/TpFinal/src/model/Admin.java" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/TpFinal/src/model/Booking.java" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/TpFinal/src/model/Client.java" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/TpFinal/src/model/Hotel.java" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/TpFinal/src/model/Receptionist.java" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/TpFinal/src/model/Room.java" afterDir="false" />
++    <list default="true" id="900bc48c-cf5e-4f29-82d7-4b18b21335fd" name="Default Changelist" comment="Delete TP-LOGIN directory">
++      <change afterPath="$PROJECT_DIR$/TpFinal/src/model/user/Admin.java" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/TpFinal/src/model/user/Client.java" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/TpFinal/src/model/user/Receptionist.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/Password.rar" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/TpFinal/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/TpFinal/src/main/Main.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/TpFinal/src/model/Admin.java" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/TpFinal/src/model/Booking.java" beforeDir="false" afterPath="$PROJECT_DIR$/TpFinal/src/model/Booking.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/TpFinal/src/model/Client.java" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/TpFinal/src/model/Hotel.java" beforeDir="false" afterPath="$PROJECT_DIR$/TpFinal/src/model/Hotel.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/TpFinal/src/model/Receptionist.java" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/TpFinal/src/model/Room.java" beforeDir="false" afterPath="$PROJECT_DIR$/TpFinal/src/model/Room.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/TpFinal/src/model/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/TpFinal/src/model/user/User.java" afterDir="false" />
+     </list>
+     <option name="SHOW_DIALOG" value="false" />
+     <option name="HIGHLIGHT_CONFLICTS" value="true" />
+@@ -20,14 +25,24 @@
+   <component name="FileTemplateManagerImpl">
+     <option name="RECENT_TEMPLATES">
+       <list>
++        <option value="Enum" />
+         <option value="Class" />
++        <option value="Interface" />
+       </list>
+     </option>
+   </component>
+   <component name="Git.Settings">
++    <option name="PREVIOUS_COMMIT_AUTHORS">
++      <list>
++        <option value="elianolivera &lt;72286803+elianolivera@users.noreply.github.com&gt;" />
++      </list>
++    </option>
+     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+   </component>
+   <component name="ProjectId" id="1sj1QAz2zfDGWCBmGwloSHUZyTS" />
++  <component name="ProjectLevelVcsManager">
++    <ConfirmationsSetting value="1" id="Add" />
++  </component>
+   <component name="ProjectViewState">
+     <option name="hideEmptyMiddlePackages" value="true" />
+     <option name="showLibraryContents" value="true" />
+@@ -36,6 +51,7 @@
+     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
++    <property name="SONARLINT_PRECOMMIT_ANALYSIS" value="true" />
+     <property name="WebServerToolWindowFactoryState" value="false" />
+     <property name="aspect.path.notification.shown" value="true" />
+     <property name="jdk.selected.JAVA_MODULE" value="1.8" />
+@@ -43,9 +59,16 @@
+     <property name="project.structure.last.edited" value="Modules" />
+     <property name="project.structure.proportion" value="0.15" />
+     <property name="project.structure.side.proportion" value="0.2" />
+-    <property name="settings.editor.selected.configurable" value="vcs.Git" />
++    <property name="settings.editor.selected.configurable" value="MTConfigurable" />
+   </component>
+   <component name="RunManager">
++    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
++      <option name="MAIN_CLASS_NAME" value="main.Main" />
++      <module name="TpFinal" />
++      <method v="2">
++        <option name="Make" enabled="true" />
++      </method>
++    </configuration>
+     <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
+       <option name="arquillianRunConfiguration">
+         <value>
+@@ -59,6 +82,11 @@
+         <option name="Make" enabled="true" />
+       </method>
+     </configuration>
++    <recent_temporary>
++      <list>
++        <item itemvalue="Application.Main" />
++      </list>
++    </recent_temporary>
+   </component>
+   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+   <component name="TaskManager">
+@@ -70,7 +98,17 @@
+       <updated>1621371166539</updated>
+       <workItem from="1621371171202" duration="103000" />
+       <workItem from="1622490036582" duration="2906000" />
++      <workItem from="1622911706294" duration="11157000" />
++      <workItem from="1623089195646" duration="6477000" />
+     </task>
++    <task id="LOCAL-00001" summary="Delete TP-LOGIN directory">
++      <created>1623101029434</created>
++      <option name="number" value="00001" />
++      <option name="presentableId" value="LOCAL-00001" />
++      <option name="project" value="LOCAL" />
++      <updated>1623101029434</updated>
++    </task>
++    <option name="localTasksCounter" value="2" />
+     <servers />
+   </component>
+   <component name="TypeScriptGeneratedFilesManager">
+@@ -86,24 +124,10 @@
+         </entry>
+       </map>
+     </option>
++    <option name="oldMeFiltersMigrated" value="true" />
+   </component>
+-  <component name="XDebuggerManager">
+-    <breakpoint-manager>
+-      <breakpoints>
+-        <line-breakpoint enabled="true" type="java-line">
+-          <url>file://$PROJECT_DIR$/TpFinal/src/model/Admin.java</url>
+-          <line>7</line>
+-          <option name="timeStamp" value="2" />
+-        </line-breakpoint>
+-        <line-breakpoint enabled="true" type="java-method">
+-          <url>file://$PROJECT_DIR$/TpFinal/src/model/Admin.java</url>
+-          <line>6</line>
+-          <properties class="model.Admin" method="&lt;init&gt;">
+-            <option name="EMULATED" value="true" />
+-          </properties>
+-          <option name="timeStamp" value="3" />
+-        </line-breakpoint>
+-      </breakpoints>
+-    </breakpoint-manager>
++  <component name="VcsManagerConfiguration">
++    <MESSAGE value="Delete TP-LOGIN directory" />
++    <option name="LAST_COMMIT_MESSAGE" value="Delete TP-LOGIN directory" />
+   </component>
+ </project>
+\ No newline at end of file
+Index: TpFinal/src/model/Booking.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package model;\r\n\r\nimport java.util.Date;\r\n\r\npublic class Booking {\r\n\r\n    private int bookingNumber;\r\n    private String nameClient;\r\n    private Date arrivalDate;\r\n    private Date departureDate;\r\n    private String roomNumber;\r\n\r\n    public int getBookingNumber() {\r\n        return bookingNumber;\r\n    }\r\n\r\n    public void setBookingNumber(int bookingNumber) {\r\n        this.bookingNumber = bookingNumber;\r\n    }\r\n\r\n    public String getNameClient() {\r\n        return nameClient;\r\n    }\r\n\r\n    public void setNameClient(String nameClient) {\r\n        this.nameClient = nameClient;\r\n    }\r\n\r\n    public Date getArrivalDate() {\r\n        return arrivalDate;\r\n    }\r\n\r\n    public void setArrivalDate(Date arrivalDate) {\r\n        this.arrivalDate = arrivalDate;\r\n    }\r\n\r\n    public Date getDepartureDate() {\r\n        return departureDate;\r\n    }\r\n\r\n    public void setDepartureDate(Date departureDate) {\r\n        this.departureDate = departureDate;\r\n    }\r\n\r\n    public String getRoomNumber() {\r\n        return roomNumber;\r\n    }\r\n\r\n    public void setRoomNumber(String roomNumber) {\r\n        this.roomNumber = roomNumber;\r\n    }\r\n\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/TpFinal/src/model/Booking.java b/TpFinal/src/model/Booking.java
+--- a/TpFinal/src/model/Booking.java	(revision 6a0cd12ba537252724e50a72f337fdbb8e4ce727)
++++ b/TpFinal/src/model/Booking.java	(date 1622921952938)
+@@ -5,7 +5,7 @@
+ public class Booking {
+ 
+     private int bookingNumber;
+-    private String nameClient;
++    private String dniClient;
+     private Date arrivalDate;
+     private Date departureDate;
+     private String roomNumber;
+@@ -18,12 +18,12 @@
+         this.bookingNumber = bookingNumber;
+     }
+ 
+-    public String getNameClient() {
+-        return nameClient;
++    public String getDniClient() {
++        return dniClient;
+     }
+ 
+-    public void setNameClient(String nameClient) {
+-        this.nameClient = nameClient;
++    public void setDniClient(String dniClient) {
++        this.dniClient = dniClient;
+     }
+ 
+     public Date getArrivalDate() {
+Index: TpFinal/src/Main.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/TpFinal/src/Main.java b/TpFinal/src/main/Main.java
+rename from TpFinal/src/Main.java
+rename to TpFinal/src/main/Main.java
+--- a/TpFinal/src/Main.java	(revision 6a0cd12ba537252724e50a72f337fdbb8e4ce727)
++++ b/TpFinal/src/main/Main.java	(date 1623092198162)
+@@ -1,4 +1,8 @@
++package main;
+ 
++import model.user.Admin;
++import model.user.Client;
++import model.user.User;
+ 
+ import java.util.InputMismatchException; //esta excepcion salta cuando no introducimos un numero, o lo q ponemos no puede ser convertido a numero//1
+ 
+@@ -10,29 +14,30 @@
+     public static void main(String[] args) {
+ 
+         Scanner sn = new Scanner(System.in);
+-        boolean salir = false;
+-        int opcion;
++        boolean exit = false;
++        int option;
+ 
+-        System.out.println("Bienvenido al hotel:");
++        System.out.println("Welcome to the hotel:");
+         System.out.println("**--------------------**");
+ 
+-        while (!salir) {
++
++        while (!exit) {
+             System.out.println("1. Room");
+             System.out.println("2. Check In");
+             System.out.println("3. Check out");
+             System.out.println("4. Room Booking");
+             System.out.println("5. Cancel Booking");
+             System.out.println("6. Guests");
+-            System.out.println("7. Settings ");
+-            System.out.println("0. Salir");
++            System.out.println("0. Exit");
+ 
+             try {
+ 
+-                System.out.println("Escribe una de las opciones");
+-                opcion = sn.nextInt();
++                System.out.println("write one options");
++                option = sn.nextInt();
+ 
+-                switch (opcion) {
++                switch (option) {
+                     case 1:
++
+                         System.out.println("1- Rooms");
+                         break;
+ 
+@@ -51,18 +56,15 @@
+                     case 6:
+                         System.out.println("6- Guests");
+                         break;
+-                    case 7:
+-                        System.out.println("7- Settings");
+-                        break;
+                     case 0:
+-                        System.out.println("0- Salir");
+-                        salir = true;
++                        System.out.println("0- Exit");
++                        exit = true;
+                         break;
+                     default:
+-                        System.out.println("Solo numeros entre 0 y 7");
++                        System.out.println("Only numbers come in 0 y 7");
+                 }
+             } catch (InputMismatchException e) {
+-                System.out.println("Debes insertar un numero");
++                System.out.println("insert one number");
+                 sn.next();
+ 
+             }
+Index: TpFinal/src/model/user/Receptionist.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/TpFinal/src/model/user/Receptionist.java b/TpFinal/src/model/user/Receptionist.java
+new file mode 100644
+--- /dev/null	(date 1622921721645)
++++ b/TpFinal/src/model/user/Receptionist.java	(date 1622921721645)
+@@ -0,0 +1,114 @@
++package model.user;
++
++import exceptions.AlreadyExistsException;
++import exceptions.NotFoundException;
++import intefaces.CheckInOut;
++import intefaces.ManagementClient;
++
++import java.util.ArrayList;
++import java.util.List;
++import java.util.Scanner;
++
++public class Receptionist extends User implements CheckInOut, ManagementClient {
++
++
++    String messageOk = "Successfully ";
++    Scanner scanner = new Scanner(System.in);
++
++    private List<Client>clientList = new ArrayList<>();
++
++
++    public Receptionist(String nameUser, String password, String name, String lastName, String dni, String country, String city) {
++        super(nameUser, password, name, lastName, dni, country, city);
++    }
++
++
++    @Override
++    public String addClient(Client client) {
++
++        if (findClientByDni(client.getDni()) == null){
++            clientList.add(client);
++            return messageOk + "added";
++        }else {
++            throw new AlreadyExistsException("Client already exists");
++        }
++    }
++
++    @Override
++    public String modifyClient(String dni) {
++
++        Client client = findClientByDni(dni);
++        if (client != null){
++
++            client.setNameUser(scanner.nextLine());
++
++            client.setPassword(scanner.nextLine());
++
++            client.setName(scanner.nextLine());
++
++            client.setLastName(scanner.nextLine());
++
++            client.setCountry(scanner.nextLine());
++
++            client.setCity(scanner.nextLine());
++
++            return messageOk + "updated";
++        }else{
++            throw new NotFoundException("Client not found");
++        }
++    }
++
++    @Override
++    public String deleteClient(String dni) {
++        Client client = findClientByDni(dni);
++        if (client != null){
++            client.setEnabled(false);
++            return messageOk + "deleted";
++        }else{
++            throw new NotFoundException("Client not found");
++        }
++    }
++
++    @Override
++    public Client searchClient(String dni) {
++        return findClientByDni(dni);
++    }
++
++    @Override
++    public String clientList() {
++        StringBuilder sb = new StringBuilder();
++        for (Client client : clientList){
++            sb.append(client.toString());
++        }
++        return sb.toString();
++    }
++
++    //------------------------------------------------------------------------------------------------------------------
++    //FIND BY ID
++
++    //Fijarse la manera de hacer el find by id y que el usuario este enabled, pero ver la manera de que cuando quiera agregar y este sea false no lo agregue
++    //No poner en el if de abajo -- && client.enabled
++
++
++    private Client findClientByDni(String dni){
++        for (Client client : clientList){
++            if(client.getDni().equals(dni)){
++                return client;
++            }
++        }
++        return null;
++    }
++
++//========================================================================================================================
++// CHECK IN - CHECK OUT
++
++    @Override
++    public String arrivalClient() {
++        return null;
++    }
++
++    @Override
++    public String departureClient() {
++        return null;
++    }
++}
+Index: TpFinal/src/model/user/Client.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/TpFinal/src/model/user/Client.java b/TpFinal/src/model/user/Client.java
+new file mode 100644
+--- /dev/null	(date 1623094571790)
++++ b/TpFinal/src/model/user/Client.java	(date 1623094571790)
+@@ -0,0 +1,15 @@
++package model.user;
++
++public class Client extends User {
++
++    private int idClient = 0;
++
++    public Client(String nameUser, String password, String name, String lastName, String dni, String country, String city, String typeUser) {
++        super(nameUser, password, name, lastName, dni, country, city,typeUser);
++        this.idClient++;
++    }
++
++    public Integer getIdClient() {
++        return idClient;
++    }
++}
+Index: TpFinal/src/model/User.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/TpFinal/src/model/User.java b/TpFinal/src/model/user/User.java
+rename from TpFinal/src/model/User.java
+rename to TpFinal/src/model/user/User.java
+--- a/TpFinal/src/model/User.java	(revision 6a0cd12ba537252724e50a72f337fdbb8e4ce727)
++++ b/TpFinal/src/model/user/User.java	(date 1623093927679)
+@@ -1,15 +1,22 @@
+-package model;
++package model.user;
++
++import model.user.Role;
+ 
+ public abstract class User {
+     protected String nameUser;
+-    protected int password;
++    protected String password;
+     protected String name;
+     protected String lastName;
+     protected String dni;
+     protected String country;
+     protected String city;
++    protected String typeUser;
++    protected boolean enabled = true;
+ 
+-    public User(String nameUser, int password, String name, String lastName, String dni, String country, String city) {
++    //Ver el tema de Rol --> Enum ya creado
++    //protected Role role;
++
++    protected User(String nameUser, String password, String name, String lastName, String dni, String country, String city, String typeUser) {
+         this.nameUser = nameUser;
+         this.password = password;
+         this.name = name;
+@@ -17,6 +24,7 @@
+         this.dni = dni;
+         this.country = country;
+         this.city = city;
++        this.typeUser = typeUser;
+     }
+ 
+     public String getNameUser() {
+@@ -27,11 +35,11 @@
+         this.nameUser = nameUser;
+     }
+ 
+-    public int getPassword() {
++    public String getPassword() {
+         return password;
+     }
+ 
+-    public void setPassword(int password) {
++    public void setPassword(String password) {
+         this.password = password;
+     }
+ 
+@@ -75,6 +83,21 @@
+         this.city = city;
+     }
+ 
++    public String getTypeUser() {
++        return typeUser;
++    }
++
++    public void setTypeUser(String typeUser) {
++        this.typeUser = typeUser;
++    }
++
++    public boolean isEnabled() {
++        return enabled;
++    }
++
++    public void setEnabled(boolean enabled) {
++        this.enabled = enabled;
++    }
+ 
+     @Override
+     public String toString() {
+@@ -86,8 +109,10 @@
+                 ", dni='" + dni + '\'' +
+                 ", country='" + country + '\'' +
+                 ", city='" + city + '\'' +
++                ", Type User ='" + typeUser + '\'' +
+                 '}';
+     }
+ 
+ 
++
+ }
+Index: .idea/misc.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"ProjectRootManager\">\r\n    <output url=\"file://$PROJECT_DIR$/out\" />\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/misc.xml b/.idea/misc.xml
+--- a/.idea/misc.xml	(revision 6a0cd12ba537252724e50a72f337fdbb8e4ce727)
++++ b/.idea/misc.xml	(date 1622918894169)
+@@ -1,6 +1,6 @@
+ <?xml version="1.0" encoding="UTF-8"?>
+ <project version="4">
+-  <component name="ProjectRootManager">
++  <component name="ProjectRootManager" version="2" project-jdk-name="1.8" project-jdk-type="JavaSDK">
+     <output url="file://$PROJECT_DIR$/out" />
+   </component>
+ </project>
+\ No newline at end of file
+Index: TpFinal/src/model/user/Admin.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/TpFinal/src/model/user/Admin.java b/TpFinal/src/model/user/Admin.java
+new file mode 100644
+--- /dev/null	(date 1623100814903)
++++ b/TpFinal/src/model/user/Admin.java	(date 1623100814903)
+@@ -0,0 +1,195 @@
++package model.user;
++
++import exceptions.AlreadyExistsException;
++import exceptions.NotFoundException;
++import intefaces.CheckInOut;
++import intefaces.ManagementClient;
++import intefaces.ManagementReceptionist;
++
++import java.util.ArrayList;
++import java.util.List;
++import java.util.Scanner;
++
++public class Admin extends User implements CheckInOut, ManagementClient, ManagementReceptionist {
++
++    public Admin(String nameUser, String password, String name, String lastName, String dni, String country, String city, String typeUser) {
++        super(nameUser, password, name, lastName, dni, country, city,typeUser);
++    }
++
++    String messageOk = "Successfully ";
++    Scanner scanner = new Scanner(System.in);
++
++    private List<Client>clientList = new ArrayList<>();
++    private List<Receptionist>receptionistList = new ArrayList<>();
++
++//    public String getAll(){
++//        StringBuilder sb = new StringBuilder();
++//        for (Receptionist receptionist : receptionistList){
++//            sb.append(receptionist.toString());
++//        }
++//        return sb.toString();
++//    }
++
++    @Override
++    public String arrivalClient() {
++
++        //Verificar si el cliente existe, sino crearlo
++        //Buscar la reserva y validar si la fecha de salida coincide con la de "hoy",
++        //Ver las habitaciones disponibles en el hotel (recorriendo lista con las habitaciones available en true) y asignarle una al cliente (available = false, description=occupied)
++        return null;
++    }
++
++    @Override
++    public String departureClient() {
++        //Buscar la reserva y validar si la fecha de salida coincide con la de "hoy", ver la habitacion y enabled pasa a true
++        return null;
++    }
++
++    @Override
++    public String addClient(Client client) {
++
++        if (findClientByDni(client.getDni()) == null){
++            clientList.add(client);
++            return messageOk + "added";
++        }else {
++            throw new AlreadyExistsException("Client already exists");
++        }
++    }
++
++    @Override
++    public String modifyClient(String dni) {
++
++        Client client = findClientByDni(dni);
++        if (client != null){
++
++            client.setNameUser(scanner.nextLine());
++
++            client.setPassword(scanner.nextLine());
++
++            client.setName(scanner.nextLine());
++
++            client.setLastName(scanner.nextLine());
++
++            client.setCountry(scanner.nextLine());
++
++            client.setCity(scanner.nextLine());
++
++            client.setTypeUser(scanner.nextLine());
++
++            return messageOk + "updated";
++        }else{
++            throw new NotFoundException("Client not found");
++        }
++    }
++
++    @Override
++    public String deleteClient(String dni) {
++        Client client = findClientByDni(dni);
++        if (client != null){
++            client.setEnabled(false);
++            return messageOk + "deleted";
++        }else{
++            throw new NotFoundException("Client not found");
++        }
++    }
++
++    @Override
++    public Client searchClient(String dni) {
++        return findClientByDni(dni);
++    }
++
++    @Override
++    public String clientList() {
++        StringBuilder sb = new StringBuilder();
++        for (Client client : clientList){
++            sb.append(client.toString());
++        }
++        return sb.toString();
++    }
++
++    public String addReceptionist(Receptionist receptionist) {
++        if (findReceptionistByDni(receptionist.getDni()) == null){
++            receptionistList.add(receptionist);
++            return messageOk;
++        }else {
++            throw new AlreadyExistsException("Receptionist already exists");
++        }
++    }
++
++    @Override
++    public String modifyReceptionist(String dni) {
++        Receptionist receptionist = findReceptionistByDni(dni);
++        if (receptionist != null){
++
++            receptionist.setNameUser(scanner.nextLine());
++
++            receptionist.setPassword(scanner.nextLine());
++
++            receptionist.setName(scanner.nextLine());
++
++            receptionist.setLastName(scanner.nextLine());
++
++            receptionist.setCountry(scanner.nextLine());
++
++            receptionist.setCity(scanner.nextLine());
++
++            return messageOk + "updated";
++        }else{
++            throw new NotFoundException("Receptionist not found");
++        }
++    }
++
++    @Override
++    public String deleteReceptionist(String dni) {
++        Receptionist receptionist = findReceptionistByDni(dni);
++        if (receptionist != null){
++            receptionist.setEnabled(false);
++            return messageOk + "deleted";
++        }else{
++            throw new NotFoundException("Receptionist not found");
++        }
++    }
++
++    @Override
++    public Receptionist searchReceptionist(String dni) {
++        return findReceptionistByDni(dni);
++    }
++
++    @Override
++    public String receptionistList() {
++        StringBuilder sb = new StringBuilder();
++        for (Client client : clientList){
++            sb.append(client.toString());
++        }
++        return sb.toString();
++    }
++
++
++    //------------------------------------------------------------------------------------------------------------------
++    //FIND BY ID
++
++    //Fijarse la manera de hacer el find by id y que el usuario este enabled, pero ver la manera de que cuando quiera agregar y este sea false no lo agregue
++    //No poner en el if de abajo -- && client.enabled
++
++
++    private Client findClientByDni(String dni){
++        for (Client client : clientList){
++            if(client.getDni().equals(dni)){
++                return client;
++            }
++        }
++        return null;
++    }
++
++    private Receptionist findReceptionistByDni(String dni){
++        for (Receptionist receptionist : receptionistList){
++            if(receptionist.getDni().equals(dni)){
++                return receptionist;
++            }
++        }
++        return null;
++    }
++
++    //------------------------------------------------------------------------------------------------------------------
++
++}
